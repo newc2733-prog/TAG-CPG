@@ -1,7 +1,7 @@
 import re, json, html, pathlib, markdown
 
 ROOT = pathlib.Path(__file__).parent
-ORDER = ["code-red", "code-black", "ed-rsi",
+ORDER = ["code-red", "rotem-algorithm", "code-black", "ed-rsi",
          "difficult-airway", "neck-injury", "one-lung-ventilation",
          "elderly-trauma", "pregnant-trauma", "drowning-hypothermia",
          "rib-fractures", "spinal-cord-injury",
@@ -15,6 +15,7 @@ GROUPS = {
 }
 # names used in the PDFs -> slug in this handbook (None = not in the set)
 NAMES = {
+    "code red rotem algorithm": "rotem-algorithm",
     "code red cpg": "code-red", "code black cpg": "code-black",
     "emergency department rsi cpg": "ed-rsi",
     "difficult airway & omfs trauma cpg": "difficult-airway",
@@ -30,7 +31,7 @@ SOURCE = {
     "elderly-trauma": "Elderly Trauma CPG 2025.pdf", "pregnant-trauma": "Pregnant Trauma CPG 2025.pdf",
     "drowning-hypothermia": "Drowning and Hypothermia CPG 2025.pdf", "rib-fractures": "Rib Fractures CPG 2025.pdf",
     "spinal-cord-injury": "Spinal Cord Injury CPG 2025.pdf", "vascular-access": "Vascular Access CPG 2025.pdf",
-    "ultrasound": "Ultrasound CPG 2025.pdf", "tag-skillset": "TAG Skills CPG 2025.pdf",
+    "ultrasound": "Ultrasound CPG 2025.pdf", "tag-skillset": "TAG Skills CPG 2025.pdf", "rotem-algorithm": "ROTEM Algorithm 2023.pdf",
 }
 
 def link_names(h):
@@ -49,7 +50,7 @@ def link_names(h):
     return "".join(out)
 
 from bs4 import BeautifulSoup
-KEYLIKE = {"role","gestation","factor","injury","medication","tier","grade","scenario","target",""}
+KEYLIKE = {"role","gestation","factor","injury","medication","tier","grade","scenario","target","stage","step",""}
 def classify(h):
     soup = BeautifulSoup(h, "html.parser")
     for wrap in soup.select("div.tbl"):
@@ -110,7 +111,8 @@ def build(slug):
     return {
         "slug": slug, "title": meta["title"], "group": meta["group"],
         "version": meta["version"], "effective": meta["effective"], "review": meta["review"],
-        "aim": meta["aim"], "objectives": [o.strip() for o in meta["objectives"].split("|")],
+        "aim": meta.get("aim", ""), "objectives": [o.strip() for o in meta.get("objectives", "").split("|") if o.strip()],
+        "footer": meta.get("footer", ""),
         "related": related, "sections": sections, "html": h, "source": SOURCE[slug],
     }
 

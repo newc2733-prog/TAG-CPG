@@ -125,6 +125,8 @@ Definitive bleeding control may be via surgery or Interventional Radiology. In g
 | **Drugs Person** | Draw and administer as per LA |
 | **Scribe** | Collate details and events on chart, comms with blood bank |
 
+<span class="anchor" id="code-red.baste"></span>
+
 > Use the **B.A.S.T.E** communication tool with the surgeons to ensure shared mental model.
 >
 > **B**lood products<br>**A**cid-base Status<br>**S**urgical Status<br>**T**emperature & **T**ime<br>**E**lectrolytes
