@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<!-- build 20261005-1643 -->
+<!-- build 20261005-1705 -->
 <style>
 @font-face{font-family:"Lexend";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/lexend-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Lexend";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/lexend-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -43,6 +43,13 @@ dialog.how button{font:700 1.05rem "Lexend",Arial,sans-serif;background:#111;col
   --scale:1;
   color-scheme:light;
   --f:"Lexend","Atkinson Hyperlegible",Arial,Helvetica,sans-serif;
+  /* colour option: one colour and one pale tint per group of guidelines */
+  --navy:#0B2F5B;
+  --c-resus:#C8102E; --t-resus:#FBE3E6;
+  --c-airway:#0067B9; --t-airway:#DEEDF9;
+  --c-populations:#7A3E9D; --t-populations:#EFE3F6;
+  --c-injuries:#00796B; --t-injuries:#DBF0ED;
+  --c-procedures:#B85C00; --t-procedures:#FBE8D5;
 }
 html{font-size:calc(100% * var(--scale));scroll-padding-top:9rem}
 *{box-sizing:border-box}
@@ -94,6 +101,44 @@ main{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:22px 64px}
 .item p{grid-column:1;margin:0;color:var(--muted);font-size:.95rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .item .chev{grid-column:2;font-size:1.6rem;line-height:1}
 .foot{margin-top:28px;color:var(--muted);font-size:.95rem;max-width:44rem}
+
+/* style switch */
+.stylectl{flex:none;display:flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem}
+@media (max-width:640px){.stylelbl{display:none}}
+.switch{flex:none;width:3.4rem;height:2rem;border-radius:999px;border:2px solid var(--line-strong);background:var(--surface);padding:0;cursor:pointer;position:relative;transition:background .15s}
+.switch span{position:absolute;top:50%;left:.2rem;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--ink);transform:translateY(-50%);transition:left .15s, background .15s}
+.switch[aria-checked="true"]{background:var(--c-airway);border-color:var(--c-airway)}
+.switch[aria-checked="true"] span{left:calc(100% - 1.55rem);background:#fff}
+:root[data-style="colour"] .stylelbl{color:#fff}
+:root[data-style="colour"] .bar .switch{background:var(--key);border-color:var(--key)}
+:root[data-style="colour"] .bar .switch span{background:var(--navy)}
+.grptag{display:none}
+
+/* colour option (data-style="colour" on the page). Everything else stays as the original. */
+.grp-resus{--gc:var(--c-resus);--gt:var(--t-resus)}
+.grp-airway{--gc:var(--c-airway);--gt:var(--t-airway)}
+.grp-populations{--gc:var(--c-populations);--gt:var(--t-populations)}
+.grp-injuries{--gc:var(--c-injuries);--gt:var(--t-injuries)}
+.grp-procedures{--gc:var(--c-procedures);--gt:var(--t-procedures)}
+:root[data-style="colour"] .bar{background:var(--navy);border-bottom-color:var(--navy)}
+:root[data-style="colour"] .brand,:root[data-style="colour"] .brand small{color:#fff}
+:root[data-style="colour"] .search input,:root[data-style="colour"] .tsize{border-color:#fff}
+:root[data-style="colour"] .grp .bar-h{background:var(--gc);color:#fff}
+:root[data-style="colour"] .grp .item{background:var(--gt);border-color:var(--gt)}
+:root[data-style="colour"] .grp .item:hover{border-color:var(--gc)}
+:root[data-style="colour"] .grp .item .chev{color:var(--gc)}
+:root[data-style="colour"] .quicks.plain .quick{border-color:var(--navy)}
+:root[data-style="colour"] .grp .grptag{display:inline-block;background:var(--gc);color:#fff;font-weight:700;font-size:.85rem;border-radius:999px;padding:2px 12px;margin:2px 0 8px}
+:root[data-style="colour"] .grp .sec h2{background:var(--gc);color:#fff}
+:root[data-style="colour"] .grp .toc a{border-color:var(--gc);color:var(--gc)}
+:root[data-style="colour"] .grp .toc a.on{background:var(--gc);color:#fff}
+:root[data-style="colour"] .grp .sec ul > li::before{background:var(--gc)}
+:root[data-style="colour"] .grp .sec ul ul > li::before{background:transparent;border-color:var(--gc)}
+:root[data-style="colour"] .grp .sec .callout ul > li::before{background:var(--key-ink)}
+:root[data-style="colour"] .grp .tbl.kv td:first-child,:root[data-style="colour"] .grp .tbl tbody th,:root[data-style="colour"] .grp .tbl td.rowh{color:var(--gc)}
+:root[data-style="colour"] .grp .tbl.kv td:first-child strong{color:inherit}
+:root[data-style="colour"] .res-grp.grp > a.res-t{background:var(--gc);color:#fff}
+:root[data-style="colour"] .flow-a.yes{background:var(--gc);border-color:var(--gc);color:#fff}
 
 /* results */
 .res-h{font-weight:700;font-size:1.1rem;margin:0 0 14px}
@@ -218,10 +263,11 @@ dialog.lb::backdrop{background:rgba(0,0,0,.9)}
     <a class="brand" href="#" aria-label="Handbook home">TAG Trauma Handbook<small>Royal London · 2025</small></a>
     <div class="search" role="search">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Search, e.g. calcium, DLT size, TXA" aria-label="Search all guidelines">
+      <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Search" aria-label="Search all guidelines">
       <span id="kbd" hidden></span>
       <button class="clear" id="clear" type="button" aria-label="Clear search" hidden>×</button>
     </div>
+    <div class="stylectl"><span class="stylelbl" id="style-lbl" aria-hidden="true">Colour</span><button type="button" class="switch" role="switch" aria-checked="false" aria-label="Colour" title="Colour on or off" data-style-toggle><span></span></button></div>
     <button class="tsize" id="tsize" type="button" aria-label="Change text size" title="Text size"><small>A</small>A</button>
   </div>
 </header>
@@ -419,7 +465,7 @@ function renderHome(){
   if (quick) h += `<section class="group"><h2 class="bar-h">Quick access</h2><div class="quicks plain">${quick}</div></section>`;
   for (const [g, label] of Object.entries(DATA.groups)) {
     const list = DATA.cpgs.filter(c => c.group === g);
-    h += `<section class="group"><h2 class="bar-h">${label}</h2><div class="list">` +
+    h += `<section class="group grp grp-${g}"><h2 class="bar-h">${label}</h2><div class="list">` +
       list.map(c => `<a class="item" href="#${c.slug}"><h3>${esc(c.title)}</h3><span class="chev" aria-hidden="true">›</span></a>`).join("") +
       `</div></section>`;
   }
@@ -444,7 +490,7 @@ function renderResults(query){
   let h = `<p class="res-h">${hits.length} match${hits.length>1?"es":""} in ${ordered.length} guideline${ordered.length>1?"s":""}</p>`;
   for (const list of ordered) {
     const c = list[0].c; list.sort((a,b) => b.score - a.score);
-    h += `<div class="res-grp"><a class="res-t" href="#${c.slug}" data-go>${esc(c.title)}<span>${list.length} match${list.length>1?"es":""}</span></a>` +
+    h += `<div class="res-grp grp grp-${c.group}"><a class="res-t" href="#${c.slug}" data-go>${esc(c.title)}<span>${list.length} match${list.length>1?"es":""}</span></a>` +
       list.slice(0, 6).map(x => `<a class="hit-row" data-go href="#${c.slug}${x.sid ? "." + x.sid : ""}"><span class="sec">${esc(x.sec)}</span>${snippet(x.text, ts)}</a>`).join("") + `</div>`;
   }
   main.innerHTML = h; window.scrollTo(0, 0);
@@ -460,9 +506,10 @@ function renderDoc(slug, sid){
   const rel = c.related.length ? `<div class="rel"><span class="lbl">See also</span>${c.related.map(r => r.slug
       ? `<a class="pill" href="#${r.slug}">${esc(BY[r.slug].title)}</a>`
       : `<span class="pill off" title="Not included in this handbook">${esc(r.name.replace(/ CPG$/,""))}</span>`).join("")}</div>` : "";
-  main.innerHTML = `<div class="doc">
+  main.innerHTML = `<div class="doc grp grp-${c.group}">
     <div class="doc-h">
       <a class="back" href="#">‹ All guidelines</a>
+      <div><span class="grptag">${esc(DATA.groups[c.group])}</span></div>
       <h1>${esc(c.title)}</h1>
       ${c.aim ? `<details class="aim"><summary>Aim and objectives</summary><p>${esc(c.aim)}</p><ul>${c.objectives.map(o => `<li>${esc(o)}</li>`).join("")}</ul></details>` : ""}
     </div>
@@ -497,6 +544,17 @@ async function setWake(on){
   } catch { wake = null; }
 }
 document.addEventListener("visibilitychange", () => { if (!document.hidden && currentSlug) setWake(true); });
+
+/* original or colour look, chosen with the switch on the home page and remembered on this phone */
+function styleIsColour(){ return document.documentElement.getAttribute("data-style") === "colour"; }
+function setStyle(colour){
+  if (colour) document.documentElement.setAttribute("data-style", "colour"); else document.documentElement.removeAttribute("data-style");
+  try { localStorage.setItem("tag-style", colour ? "colour" : "original"); } catch {}
+  document.querySelectorAll("[data-style-toggle]").forEach(b => b.setAttribute("aria-checked", String(colour)));
+}
+try { if (localStorage.getItem("tag-style") === "colour") document.documentElement.setAttribute("data-style", "colour"); } catch {}
+document.querySelectorAll("[data-style-toggle]").forEach(b => b.setAttribute("aria-checked", String(styleIsColour())));
+document.addEventListener("click", e => { if (e.target.closest("[data-style-toggle]")) setStyle(!styleIsColour()); });
 
 /* text size */
 const SIZES = [1, 1.15, 1.3];
