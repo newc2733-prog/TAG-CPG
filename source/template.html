@@ -32,6 +32,10 @@ button{font:inherit;color:inherit}
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--page);border-bottom:3px solid var(--line-strong)}
 .bar-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center}
 .brand{font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none;flex:none;line-height:1.15}
+/* back to the list of guidelines; always in reach because the bar stays at the top */
+.homebtn{flex:none;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid var(--line-strong);background:var(--bar);color:var(--bar-ink);display:grid;place-items:center;text-decoration:none}
+.homebtn svg{width:1.2rem;height:1.2rem;margin-right:.1rem}
+:root[data-style="colour"] .homebtn{background:var(--key);color:var(--key-ink);border-color:var(--key)}
 .brand small{display:block;font-weight:400;font-size:.8rem;color:var(--muted)}
 .search{flex:1;position:relative;min-width:0;max-width:30rem;margin-right:auto}
 .search input{width:100%;height:2.5rem;border:2px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:999px;padding:0 2.3rem 0 2.4rem;font:400 1rem var(--f)}
@@ -226,6 +230,7 @@ dialog.lb::backdrop{background:rgba(0,0,0,.9)}
 
 <header class="bar">
   <div class="bar-in">
+    <a class="homebtn" id="homebtn" href="#" aria-label="Back to all guidelines" title="All guidelines" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
     <a class="brand" href="#" aria-label="Handbook home">TAG Trauma Handbook<small>Royal London · 2025</small></a>
     <div class="search" role="search">
       <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -356,7 +361,7 @@ function quickLinks(list){
 }
 
 function renderHome(){
-  currentSlug = null; setWake(false);
+  currentSlug = null; setWake(false); $("#homebtn").hidden = true;
   document.title = "TAG Trauma Handbook";
   const rec = recent();
   let h = `<div class="intro"><h1>Trauma anaesthesia guidelines</h1>
@@ -379,7 +384,7 @@ function renderHome(){
 }
 
 function renderResults(query){
-  currentSlug = null; setWake(false);
+  currentSlug = null; setWake(false); $("#homebtn").hidden = false;
   const ts = terms(query);
   const hits = search(query);
   if (!hits.length) {
@@ -401,7 +406,7 @@ function renderResults(query){
 let currentSlug = null;
 function renderDoc(slug, sid){
   const c = BY[slug]; if (!c) return renderHome();
-  currentSlug = slug; setWake(true);
+  currentSlug = slug; setWake(true); $("#homebtn").hidden = false;
   hook("view", "/" + slug, c.title);
   document.title = c.title + " · TAG Trauma Handbook";
   pushRecent(slug);
@@ -536,7 +541,7 @@ main.addEventListener("click", e => {
   if (z) openLb(z.dataset.src, z.dataset.cap);
 });
 document.addEventListener("click", e => {
-  const a = e.target.closest("a.brand"); if (a) { q.value = ""; clearBtn.hidden = true;  if (!location.hash) renderHome(); }
+  const a = e.target.closest("a.brand, a.homebtn"); if (a) { q.value = ""; clearBtn.hidden = true;  if (!location.hash) renderHome(); }
 });
 
 /* ---------- lightbox ---------- */
