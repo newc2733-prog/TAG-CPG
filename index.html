@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<!-- build 20261005-1705 -->
+<!-- build 20261005-1754 -->
 <style>
 @font-face{font-family:"Lexend";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/lexend-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Lexend";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/lexend-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -64,13 +64,13 @@ button{font:inherit;color:inherit}
 .bar-in{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;gap:10px;align-items:center}
 .brand{font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none;flex:none;line-height:1.15}
 .brand small{display:block;font-weight:400;font-size:.8rem;color:var(--muted)}
-.search{flex:1;position:relative;min-width:0}
-.search input{width:100%;height:2.9rem;border:2px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:999px;padding:0 2.6rem 0 2.6rem;font:400 1.05rem var(--f)}
+.search{flex:1;position:relative;min-width:0;max-width:30rem;margin-right:auto}
+.search input{width:100%;height:2.5rem;border:2px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:999px;padding:0 2.3rem 0 2.4rem;font:400 1rem var(--f)}
 .search input::placeholder{color:var(--muted)}
 .search input:focus{outline:3px solid var(--focus);outline-offset:1px}
-.search .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink);pointer-events:none}
-.search .clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;width:2.2rem;height:2.2rem;border-radius:50%;cursor:pointer;font-size:1.5rem;line-height:1}
-.tsize{flex:none;border:2px solid var(--line-strong);background:var(--surface);border-radius:999px;height:2.9rem;min-width:2.9rem;padding:0 .7rem;cursor:pointer;font-weight:700;display:flex;align-items:baseline;justify-content:center;gap:1px}
+.search .ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink);pointer-events:none}
+.search .clear{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;width:2rem;height:2rem;border-radius:50%;cursor:pointer;font-size:1.4rem;line-height:1}
+.tsize{flex:none;border:2px solid var(--line-strong);background:var(--surface);border-radius:999px;height:2.5rem;min-width:2.5rem;padding:0 .55rem;cursor:pointer;font-weight:700;display:flex;align-items:baseline;justify-content:center;gap:1px}
 .tsize small{font-size:.75rem}
 @media (max-width:640px){.brand{display:none}}
 
@@ -102,16 +102,16 @@ main{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:22px 64px}
 .item .chev{grid-column:2;font-size:1.6rem;line-height:1}
 .foot{margin-top:28px;color:var(--muted);font-size:.95rem;max-width:44rem}
 
-/* style switch */
+/* look switch */
 .stylectl{flex:none;display:flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem}
 @media (max-width:640px){.stylelbl{display:none}}
-.switch{flex:none;width:3.4rem;height:2rem;border-radius:999px;border:2px solid var(--line-strong);background:var(--surface);padding:0;cursor:pointer;position:relative;transition:background .15s}
-.switch span{position:absolute;top:50%;left:.2rem;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--ink);transform:translateY(-50%);transition:left .15s, background .15s}
-.switch[aria-checked="true"]{background:var(--c-airway);border-color:var(--c-airway)}
-.switch[aria-checked="true"] span{left:calc(100% - 1.55rem);background:#fff}
+/* a round button like the text-size one. Its disc shows the look a tap switches to:
+   a colour wheel while the page is black and white, half black and half white while it is in colour. */
+.stylebtn{flex:none;width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid var(--line-strong);background:var(--surface);padding:0;cursor:pointer;display:grid;place-items:center}
+.stylebtn span{width:1.5rem;height:1.5rem;border-radius:50%;background:conic-gradient(#E5243B,#F28C28,#F2C94C,#2BA84A,#0B84D8,#7A3E9D,#E5243B)}
+:root[data-style="colour"] .stylebtn{border-color:#fff}
+:root[data-style="colour"] .stylebtn span{background:linear-gradient(135deg,#111 0 50%,#fff 50% 100%);box-shadow:0 0 0 2px #111}
 :root[data-style="colour"] .stylelbl{color:#fff}
-:root[data-style="colour"] .bar .switch{background:var(--key);border-color:var(--key)}
-:root[data-style="colour"] .bar .switch span{background:var(--navy)}
 .grptag{display:none}
 
 /* colour option (data-style="colour" on the page). Everything else stays as the original. */
@@ -163,7 +163,7 @@ mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2p
 .aim ul{margin:0;padding-left:1.2rem}
 .rel{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;max-width:46rem}
 .rel .lbl{font-weight:700;font-size:1rem;margin-right:2px}
-.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 4.2rem);z-index:10;background:var(--page);margin:18px -16px 0;padding:8px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1.5px solid var(--line)}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 3.9rem);z-index:10;background:var(--page);margin:18px -16px 0;padding:8px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1.5px solid var(--line)}
 .toc::-webkit-scrollbar{display:none}
 .toc a{flex:none;font-size:.95rem;text-decoration:none;color:var(--ink);border:2px solid var(--line-strong);background:var(--surface);border-radius:999px;padding:3px 13px;white-space:nowrap}
 .toc a.on{background:var(--bar);color:var(--bar-ink)}
@@ -267,7 +267,7 @@ dialog.lb::backdrop{background:rgba(0,0,0,.9)}
       <span id="kbd" hidden></span>
       <button class="clear" id="clear" type="button" aria-label="Clear search" hidden>×</button>
     </div>
-    <div class="stylectl"><span class="stylelbl" id="style-lbl" aria-hidden="true">Colour</span><button type="button" class="switch" role="switch" aria-checked="false" aria-label="Colour" title="Colour on or off" data-style-toggle><span></span></button></div>
+    <div class="stylectl"><span class="stylelbl" aria-hidden="true">Colour</span><button type="button" class="stylebtn" aria-pressed="false" aria-label="Colour" title="Switch between colour and black and white" data-style-toggle><span></span></button></div>
     <button class="tsize" id="tsize" type="button" aria-label="Change text size" title="Text size"><small>A</small>A</button>
   </div>
 </header>
@@ -545,15 +545,15 @@ async function setWake(on){
 }
 document.addEventListener("visibilitychange", () => { if (!document.hidden && currentSlug) setWake(true); });
 
-/* original or colour look, chosen with the switch on the home page and remembered on this phone */
+/* original or colour look, chosen with the round button in the top bar and remembered on this phone */
 function styleIsColour(){ return document.documentElement.getAttribute("data-style") === "colour"; }
 function setStyle(colour){
   if (colour) document.documentElement.setAttribute("data-style", "colour"); else document.documentElement.removeAttribute("data-style");
   try { localStorage.setItem("tag-style", colour ? "colour" : "original"); } catch {}
-  document.querySelectorAll("[data-style-toggle]").forEach(b => b.setAttribute("aria-checked", String(colour)));
+  document.querySelectorAll("[data-style-toggle]").forEach(b => b.setAttribute("aria-pressed", String(colour)));
 }
 try { if (localStorage.getItem("tag-style") === "colour") document.documentElement.setAttribute("data-style", "colour"); } catch {}
-document.querySelectorAll("[data-style-toggle]").forEach(b => b.setAttribute("aria-checked", String(styleIsColour())));
+document.querySelectorAll("[data-style-toggle]").forEach(b => b.setAttribute("aria-pressed", String(styleIsColour())));
 document.addEventListener("click", e => { if (e.target.closest("[data-style-toggle]")) setStyle(!styleIsColour()); });
 
 /* text size */
