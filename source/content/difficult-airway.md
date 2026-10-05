@@ -16,7 +16,7 @@ related: Emergency Department RSI CPG | Neck Injury CPG | Code Black CPG
 - It is unusual to perform awake fibreoptic intubation in acute trauma. Indications for intubation, patient acuity, and time often limit its use.
 - Videolaryngoscopy (VL) is useful in documenting airway injury (e.g. laryngeal tears)
 
-## Maintaining C-Spine Mobilisation
+## Maintaining C-Spine Immobilisation
 
 - Assume all facial trauma patients have a C-spine injury and minimise movement
 - Remove C-Spine collar prior to intubation

@@ -39,7 +39,7 @@ Traumatic spinal cord injury (SCI) occurs when there is a disturbance to normal 
 ### C-Spine Control
 
 - Ensure padded head rolls + tape & log rolling for all movements
-- Nurse patients plat, tilt bed 15-20<sup>o</sup> head up if tolerated
+- Nurse patients flat, tilt bed 15-20<sup>o</sup> head up if tolerated
 - Early use of padded collar (Miami J)
 
 ### Airway & Breathing
@@ -58,7 +58,7 @@ Traumatic spinal cord injury (SCI) occurs when there is a disturbance to normal 
 
 ### Disability
 
-- ED should document neurology (AISA chart)
+- ED should document neurology (ASIA chart)
 - Maintain normothermia, normoglycemia
 - Imaging as per TTL/Neurosurgeons
 - Multimodal analgesia

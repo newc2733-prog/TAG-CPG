@@ -4,7 +4,7 @@ version: 2.0 (reviewed July 2025)
 effective: 1 May 2021
 review: 1 July 2028
 aim: To ensure all pregnant trauma patients receive safe and effective anaesthesia and resuscitation.
-objectives: Highlight relevant anatomy and imaging considerations in pregnant trauma. | Describe specific differences relevant to pregnant trauma resuscitation. | Clarify indications for peri-mortem Caesarian section.
+objectives: Highlight relevant anatomy and imaging considerations in pregnant trauma. | Describe specific differences relevant to pregnant trauma resuscitation. | Clarify indications for peri-mortem Caesarean section.
 related: Difficult Airway & OMFS Trauma CPG | Code Red CPG | Vascular Access CPG | Emergency Department RSI CPG
 ---
 ## General Information
@@ -22,7 +22,7 @@ related: Difficult Airway & OMFS Trauma CPG | Code Red CPG | Vascular Access CPG
 | **34 – 36 weeks** | Fundus is at height of costal margin. Bowel is pushed cephalad. Uterus is thin walled and elastic. Inelastic placenta makes it vulnerable to shear forces at utero-placental interface (abruption). |
 | **>36 weeks** | Foetal descent into pelvis, head usually presenting. Pelvic fracture may result in foetal skull fracture. |
 
-## Imagining in Pregnant Trauma
+## Imaging in Pregnant Trauma
 
 ### Ultrasound
 
@@ -54,19 +54,19 @@ related: Difficult Airway & OMFS Trauma CPG | Code Red CPG | Vascular Access CPG
 <tbody>
 <tr><th>Airway</th><td><ul><li>Rapid desaturation</li><li>Increased aspiration risk</li><li>Increased vascularity/oedema of airway mucosa</li><li>Difficult laryngoscopy</li><li>Difficult FONA</li></ul></td><td><ul><li>Consider HFNO<sub>2</sub></li><li>Consider video laryngoscope</li><li>Place gastric tube orally (epistaxis risk)</li><li>Use longitudinal incision for FONA</li></ul></td></tr>
 <tr><th>Breathing</th><td><ul><li>Diaphragm elevated ~5cm</li><li>Thoracic trauma may risk intra-abdominal injury</li><li>Increased O<sub>2</sub> consumption</li><li>Low EtCO<sub>2</sub> is normal</li></ul></td><td><ul><li>Intercostal drains should be placed higher than normal (3<sup>rd</sup>/4<sup>th</sup> intercostal space)</li><li>Low threshold for concern around thoraco-abdominal injuries</li></ul></td></tr>
-<tr><th>Circulation</th><td><ul><li>Large cardiac reserve (increased CO, dilutional anaemia, increase blood volume) will mask bleeding but collapse will be precipitous</li><li>Aortocaval compression reduces CO by ~ 30%</li><li>Utero-placental perfusion depend on maternal MAP and sensitive to catecholamines</li></ul></td><td><ul><li>Vital signs are a poor marker of haemodynamic stability</li><li>Minimise aortocaval compression with 15-30<sup>O</sup> left lateral tilt or left uterine displacement</li><li>Place early foetal monitoring (foetal compromise may be the first sign of maternal bleeding)</li></ul></td></tr>
+<tr><th>Circulation</th><td><ul><li>Large cardiac reserve (increased CO, dilutional anaemia, increased blood volume) will mask bleeding but collapse will be precipitous</li><li>Aortocaval compression reduces CO by ~ 30%</li><li>Utero-placental perfusion depends on maternal MAP and sensitive to catecholamines</li></ul></td><td><ul><li>Vital signs are a poor marker of haemodynamic stability</li><li>Minimise aortocaval compression with 15-30<sup>O</sup> left lateral tilt or left uterine displacement</li><li>Place early foetal monitoring (foetal compromise may be the first sign of maternal bleeding)</li></ul></td></tr>
 </tbody></table></div>
 
 | | |
 |---|---|
-| **CPR** | • Drugs for cardiac arrest as per ALS algorithm – do not adjust doses<br>• CPR done best in supine position with manual uterine displacement (pull rather than push)<br>• Resuscitative hysterectomy as soon as possible after onset of maternal cardiac arrest |
+| **CPR** | • Drugs for cardiac arrest as per ALS algorithm – do not adjust doses<br>• CPR done best in supine position with manual uterine displacement (pull rather than push)<br>• Resuscitative hysterotomy as soon as possible after onset of maternal cardiac arrest |
 | **Haematology** | • Emergency O negative blood<br>• In pregnancy there is increased fibrinogen and D-Dimers and decreased PT, PTT, and platelets<br>• Increased propensity to develop coagulopathy which can be precipitated by trauma, abruption, and amniotic fluid embolus<br>• Use ROTEM to guide resuscitation. Obstetric ROTEM algorithm is available but if unable to locate use regular adult algorithm |
-| **Antibiotics** | • If pre-delivery: Cefuroxime 1.5h/Metronidazole 500mg<br>• If post-delivery: Co-Amoxiclav 1.2g<br>• Penicillin allergy: Clindamycin 600mg |
-| **Uterotonics** | • Oxytocin 2 – 5IU slow IV push (side effects: transient hypotension, tachycardia) followed by infusion 40UI in 500ml saline over 4 hours<br>• Ergometrine 500mcg IM (side effects: hypertension)<br>• Hemabate (carboprost) 250mcg IM (side effects: bronchospasm); can be repeated every 15 minutes, max total = 8 doses (2mg)<br>• Misoprostol 800mcg PV<br>• Note that uterotonics may not be available in Main Theatres and may need to be sourced from the Obstetric Theatres (6<sup>th</sup> floor) |
+| **Antibiotics** | • If pre-delivery: Cefuroxime 1.5g/Metronidazole 500mg<br>• If post-delivery: Co-Amoxiclav 1.2g<br>• Penicillin allergy: Clindamycin 600mg |
+| **Uterotonics** | • Oxytocin 2 – 5IU slow IV push (side effects: transient hypotension, tachycardia) followed by infusion 40IU in 500ml saline over 4 hours<br>• Ergometrine 500mcg IM (side effects: hypertension)<br>• Hemabate (carboprost) 250mcg IM (side effects: bronchospasm); can be repeated every 15 minutes, max total = 8 doses (2mg)<br>• Misoprostol 800mcg PV<br>• Note that uterotonics may not be available in Main Theatres and may need to be sourced from the Obstetric Theatres (6<sup>th</sup> floor) |
 | **Analgesia** | • Avoid NSAIDs or Codeine |
 | **Key Staff** | • **Emergency Call**: **2222**, declare ‘Maternal Cardiac Arrest’ + location<br>• **Obstetric consultant: 45635**<br>• **Neonatal team: 45666** (consultant); **45853** (SpR)<br>• **Labour Ward coordinator: 45636** |
 
-## Peri-mortem Caesarian Section
+## Peri-mortem Caesarean Section
 
 | Indications | Contraindications | Important Details |
 |---|---|---|

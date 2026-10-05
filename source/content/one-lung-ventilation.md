@@ -9,7 +9,7 @@ related:
 ---
 ## Key Principles
 
-- Requirement for OLV is extremely rare in acute major trauma patients. Occasionally intra-thoracic access is surgically difficult or overwhelming lung leak from trachea-bronchial injury necessitates this.
+- Requirement for OLV is extremely rare in acute major trauma patients. Occasionally intra-thoracic access is surgically difficult or overwhelming lung leak from tracheo-bronchial injury necessitates this.
 - DLT and OLV are more frequent in patients coming for urgent/ semi-elective VATS surgery.
 
 ## Indications for DLT & Lung Isolation
@@ -59,7 +59,7 @@ Bilateral chest expansion, Et CO<sub>2</sub>, misting? If yes, then with the ass
 
 **Now check side-to side isolation:**
 
-1. Clamp tracheal lumen on the Y-connector in a downwards direction, and opens venting cap
+1. Clamp tracheal lumen on the Y-connector in a downwards direction, and open venting cap
 2. Inflate bronchial cuff (in 0.5ml increments, max 2-3ml) until step change decrease in leak/no leak felt
 3. Chest expansion/breath sounds heard only on L
 4. Switch the clamp to the bronchial lumen, open cap, close tracheal lumen cap
@@ -113,5 +113,5 @@ Bilateral chest expansion, Et CO<sub>2</sub>, misting? If yes, then with the ass
 
 ### Ongoing management
 
-- Ventilated lung: Utilise frequent recruitment manoeuvers, adjust PEEP and allow permissive hypercapnoea if physiology will allow.
-- Non-ventilated lung: Passive insufflation of oxygen or CPAP (1-5cmH<sub>2</sub>O) may be administered via a Water’s Circuit from the external oxygen supply of the anaesthetic machine if significant hypoxaemia.
+- Ventilated lung: Utilise frequent recruitment manoeuvres, adjust PEEP and allow permissive hypercapnia if physiology will allow.
+- Non-ventilated lung: Passive insufflation of oxygen or CPAP (1-5cmH<sub>2</sub>O) may be administered via a Waters circuit from the external oxygen supply of the anaesthetic machine if significant hypoxaemia.

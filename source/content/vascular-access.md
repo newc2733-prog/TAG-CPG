@@ -14,7 +14,7 @@ related: Code Red CPG | REBOA CPG
 - Central Trauma line access should be considered early. In patients with no concerns over spinal precautions these may be placed in the internal jugular or subclavian vein. Ultrasound is not mandated but may be useful.
 - Avoid cannulation at a site distal to an injury that may have caused vascular disruption e.g., proximal humerus fracture. Femoral access should be avoided in patients where abdominal or pelvic injuries are suspected.
 - Vascular access may have been established during the pre-hospital phase. This may be comprehensive in HEMS patients. These lines should be flushed and aspirated to confirm intravascular placement. **Be wary of line misplacement and have a low threshold for establishing alternative wide bore IV access.**
-- Fully sterile placement of lines in extremis is difficult. Aseptic non-touch technique, such as when inserting a cannula, may be a useful temporalizing alternative.
+- Fully sterile placement of lines in extremis is difficult. Aseptic non-touch technique, such as when inserting a cannula, may be a useful temporising alternative.
 - Pre-hospital and ED placed Trauma lines should be removed following a period of stability after damage control surgery and usually within 24 hours to minimise risk of infection.
 - Major, non-compressible haemorrhage can occur during craniotomy.
 - All lines must be capped, secured and cleanly dressed before the patient is delivered to the ACCU.
@@ -47,7 +47,7 @@ related: Code Red CPG | REBOA CPG
 - Await removal of the scoop stretcher before commencement.
 - Attempt to perform sterile, however in extremis, omission of cleaning is acceptable.
 - Trendelenburg position is helpful as is having an assistant hold the ipsilateral wrist and pull the arm towards the foot, ‘squaring’ the shoulder.
-- During **Code Red**, unless specifically precluded, **subclavian access should take place on the left side**. This is to remain out of the way of the doctor performing the primary survey, the FAST scan and the airway anaesthetist at the head. The Belmont and blood products are positioned behind the left should and allow easy access to this line.
+- During **Code Red**, unless specifically precluded, **subclavian access should take place on the left side**. This is to remain out of the way of the doctor performing the primary survey, the FAST scan and the airway anaesthetist at the head. The Belmont and blood products are positioned behind the left shoulder and allow easy access to this line.
 - The MAC Arrow 10cm catheter is currently used by the Trust. It has a brown 9F distal lumen capable of flow rates of up to 500ml/min, and a white 12G proximal lumen, capable of flow rates of 150ml/min. The external diameter is 18F.
 - Pause to confirm you are in a vein (no pulsatile flow) before inserting the line.
 - The device is pre-loaded with a 20cm tissue dilator. There should be no resistance on insertion of the guidewire. A small incision is needed at the skin to aid insertion.
@@ -64,6 +64,6 @@ related: Code Red CPG | REBOA CPG
 | | |
 |---|---|
 | **Internal jugular Trauma Line** | This can be considered if subclavian access is not achieved or contraindicated. It should be avoided if coexisting neck/spinal or severe traumatic brain injury is suspected. |
-| **Intra-Osseus Access (IO)** | Humeral or tibial IO is acceptable for drug delivery, RSI and initial access. It will not be sufficient for massive transfusion and should be considered a steppingstone to more definitive access. |
+| **Intra-Osseous Access (IO)** | Humeral or tibial IO is acceptable for drug delivery, RSI and initial access. It will not be sufficient for massive transfusion and should be considered a steppingstone to more definitive access. |
 | **Femoral Cut-down** | Groin cut down to the femoral vessels and either direct access or indirect Seldinger cannulation (needle through skin into vessel under direct vision) may be an option. Surgical help is usually required. |
 | **Right Atrial Appendage Access** | This is best performed by the operating Trauma Surgeon. Access with a foley catheter or Luer extension and is secured with a purse string suture. The fluid giving-set is pushed into the proximal end of the foley and should be secured in place with a suture. |

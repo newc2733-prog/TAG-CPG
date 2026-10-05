@@ -58,7 +58,7 @@ Keep all elements of anaesthesia as simple and standardised as possible
 | **Calcium** | **10 ml 10% Calcium Chloride**<br>Keep ionised Ca<sup>2+</sup> > 1.0 |
 | **Bicarbonate** | **1ml/kg of 8.4%** for severe, profound acidosis |
 | **Potassium** | **10 ml 10% Calcium Chloride** (omit if Ca<sup>2+</sup> > 1.3)<br>**Insulin/ Dextrose:** 50u insulin in 50ml of 50% dextrose. |
-| **Noradrenaline/Adrenaline** | Should only be considered once the haemorrhage has been controlled and patients volume restored. |
+| **Noradrenaline/Adrenaline** | Should only be considered once the haemorrhage has been controlled and patient’s volume restored. |
 
 ### Context & Rationale:
 
@@ -71,7 +71,7 @@ Definitive bleeding control may be via surgery or Interventional Radiology. In g
 - In active bleeding, **permissive hypotension** is accepted. This should be kept to the minimum duration necessary. In most patients a **SBP of ±60mmHg** can be accepted. In the elderly or those with known or suspected stenotic coronary or aortic lesions, aim for a **SBP of ±70mmHg**. In patients with confirmed traumatic brain injury or spinal cord injury a risk-benefit decision should be made based on the severity of bleeding and likely degree of compromise to the cerebral/spinal cord perfusion pressure.
 - **Maintain a ratio of PRBC:FFP:Platelets of 1:1:1**. Blood packs come in the following format:
     - **Pack A:** 6 PRBC (O negative/positive blood from local fridge) + 6 FFP
-    - **Pack B:** 6 PRBC (from fridge as above) + 6 FPP + 2 Cryo + 1 Platelets (1 bag = 6 individual units)
+    - **Pack B:** 6 PRBC (from fridge as above) + 6 FFP + 2 Cryo + 1 Platelets (1 bag = 6 individual units)
     - **Keep ahead of requirements:** Blood bank will thaw 6 units FFP at a time as standard during a Code Red but will defrost 2 Pack B on request.
 - Resuscitate according to the **lactate and base deficit** which should improve linearly with bleeding control and volume restoration.
 - Refer to Vascular Access CPG and RATS Handbook for Vascular access and Belmont procedures.
@@ -84,7 +84,7 @@ Definitive bleeding control may be via surgery or Interventional Radiology. In g
 - **No crystalloids** should be administered during the resuscitation phase.
 - Code Red patients should receive **2g of Tranexamic Acid** prior to arrival in theatre or within the first 3 hours of injury. Further doses (1g) should be given if fibrinolysis is apparent on ROTEM or every whole-body transfusion (12 PRBC + 2x Pack B).
 - **Hypocalcaemia** results from chelation by citrate in the blood products and is common in all major resuscitations. Keep the **ionised calcium > 1.0** with regular boluses of **Calcium Chloride** (**5 - 10ml of 10% solution**). Beware Calcium Gluconate: dosing requires 3x more than Calcium Chloride per unit volume.
-- The pH should improve with resuscitation, but prolonged acidosis impairs myocardial function and promotes arrythmias, vasodilation and coagulopathy. If **pH < 7** consider **1ml/kg of 8.4% sodium bicarbonate.**
+- The pH should improve with resuscitation, but prolonged acidosis impairs myocardial function and promotes arrhythmias, vasodilation and coagulopathy. If **pH < 7** consider **1ml/kg of 8.4% sodium bicarbonate.**
 - Vasoplegia should be treated with **noradrenaline**. This is in the context of indicators that haemorrhage is controlled and volume status is approaching normal, but blood pressure remains poor. Consider early echocardiography to evaluate quality of ventricular contractility and early ECMO consultation.
 
 ### Potassium:

@@ -42,7 +42,7 @@ related: Emergency Department RSI CPG | Elderly Trauma CPG | Neck Injury CPG
 |---|---|
 | **MAP** | **> 90 mmHg** (CPP > 60 if ICP known)<br>Insert an arterial line when able, but do not delay interventions |
 | **PaO<sub>2</sub>** | **> 13 kPa** (spO2 >95%) |
-| **PaCO<sub>2</sub>** | **4.5-5 kPa**, titrate to EtCO2<br>Initially assume difference of 1kPa between EtCO2 & PaCO2, confirm with blood gasses |
+| **PaCO<sub>2</sub>** | **4.5-5 kPa**, titrate to EtCO2<br>Initially assume difference of 1kPa between EtCO2 & PaCO2, confirm with blood gases |
 | **PEEP** | **5 cmH<sub>2</sub>O**, Vt: 4-8 ml/kg |
 | **Blood glucose** | **6-10 mmol/L** |
 | **Temperature** | **36.5-37.5°C** |

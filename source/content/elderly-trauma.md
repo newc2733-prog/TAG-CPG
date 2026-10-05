@@ -11,7 +11,7 @@ related: Rib Fractures CPG | Spinal Cord Injury CPG | Anticoagulation Reversal C
 
 - Adults > 65 years-old; may also apply to younger, but frail patients.
 - Patients are at a higher risk of morbidity and mortality.
-- Aging, comorbidity and medications affect presentation and physiology.
+- Ageing, comorbidity and medications affect presentation and physiology.
 
 > **INJURY MECHANISM:**<br>**Minor mechanisms cause major trauma to the head, spine, chest and pelvis.**
 >
@@ -61,7 +61,7 @@ related: Rib Fractures CPG | Spinal Cord Injury CPG | Anticoagulation Reversal C
 
 - Documented decisions for CPR and level of escalation.
 - Ensure patient and family involvement
-- If **Anaesthesia + DNACPR**, DNACP is normally reversed for immediately reversible causes. (Discuss at time of consent).
+- If **Anaesthesia + DNACPR**, DNACPR is normally reversed for immediately reversible causes. (Discuss at time of consent).
 
 ### Intra-op
 
@@ -119,4 +119,4 @@ Up to 50% of patients develop delirium after trauma/surgery. 4AT is a screening 
 |---|---|
 | **Major risk factors** | Older, frailer, cognitive impairment, severe trauma or medical illness, hip fracture, previous delirium. |
 | **De-escalation** | **Non pharmacological:**<br>• Patients are often terrified, provide repeated reorientation.<br>• Optimise a reassuring and calming environment e.g. side bed, curtains, same language staff or language line.<br>• Consider inviting relatives to recovery.<br>• Replace teeth, glasses, hearing aids<br>**Pharmacological:**<br>• Only if conservative measures have failed, and patient is a risk to self or staff/can’t comply with treatment. Start small and titrate.<br>• 1st line: Haloperidol 0.5mg IV / IM (CI: prolonged QT, Parkinson’s, Lewy body dementia)<br>• 2nd line: Lorazepam 0.5mg IV / IM |
-| **Causes** | • Hypoxia & hypercapnia<br>• Infection: e.g. pneumonia<br>• Hypotension, anaemia (Hb > 90 g/l)<br>• Organ ischaemia (e.g. heart, brain, GI tract)<br>• Pain<br>• Consider organ ischaemia including heart, GI tract, brain<br>• Drugs, constipation, urinary retention<br>• Hyper/hypothermia<br>• Dehydration/hunger/hypoglycaemia |
+| **Causes** | • Hypoxia & hypercapnia<br>• Infection: e.g. pneumonia<br>• Hypotension, anaemia (Hb < 90 g/l)<br>• Organ ischaemia (e.g. heart, brain, GI tract)<br>• Pain<br>• Drugs, constipation, urinary retention<br>• Hyper/hypothermia<br>• Dehydration/hunger/hypoglycaemia |

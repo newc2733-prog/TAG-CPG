@@ -72,7 +72,7 @@ Patients should be considered for placement of an indwelling LA catheter within 
 - Patient must be accepted to ACCU prior to siting catheter.
 - Epidurals should usually be placed in awake patients unless there are exceptional circumstances. An MDT discussion between ICU Consultant, Trauma Consultant and TAG Consultant should determine if this is in the patient’s best interest.
 - These patients are at risk of haemodynamic collapse due to fluid restriction and profound sympathetic block.
-- It is minimum safety requirement to have ODP assistance and AAGBI monitoring.
+- It is a minimum safety requirement to have ODP assistance and AAGBI monitoring.
 - It is prudent to have 2 anaesthetists where possible. One to titrate IV analgesia and pressor and the other to do the procedure.
 - Site epidural at a midpoint of injury or slightly cephalad.
 - These patients are in severe pain, the shorter the procedure, the better for the patient, therefore ensure all kit is prepared and assembled prior to positioning.

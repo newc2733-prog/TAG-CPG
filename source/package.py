@@ -8,6 +8,9 @@ OUT = ROOT / "app" / "handbook"
 STAMP = datetime.datetime.now()
 VERSION = STAMP.strftime("%Y%m%d-%H%M")
 BUILD_LABEL = STAMP.strftime("%-d %b %Y")
+# Visit counting (GoatCounter). Put the site code here, e.g. "tag-handbook" for tag-handbook.goatcounter.com.
+# Leave empty to switch counting off.
+COUNTER = ""
 
 if OUT.exists(): shutil.rmtree(OUT)
 (OUT / "fonts").mkdir(parents=True); (OUT / "icons").mkdir()
@@ -31,14 +34,73 @@ html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{dis
 :root{padding-bottom:env(safe-area-inset-bottom,0px)}
 .update{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:50;background:#111;color:#FBFAF6;border:0;border-radius:999px;padding:12px 20px;font:700 1rem "Lexend",Arial,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.3);cursor:pointer}
 .install{max-width:44rem;margin-top:16px;font-size:.95rem;color:#5A5A5A}
+.getapp{max-width:44rem;display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:4px 0 0}
+.getapp button{font:700 1.05rem "Lexend",Arial,sans-serif;border-radius:999px;cursor:pointer;padding:10px 20px;min-height:3rem}
+.getapp .go{background:#111;color:#FBFAF6;border:2px solid #111}
+.getapp .no{background:none;color:#111;border:0;font-weight:400;text-decoration:underline;padding:10px 6px}
+dialog.how{border:2px solid #111;border-radius:16px;padding:20px;max-width:min(26rem,calc(100vw - 32px));background:#fff;color:#111;font:400 1.05rem/1.55 "Lexend",Arial,sans-serif}
+dialog.how::backdrop{background:rgba(0,0,0,.55)}
+dialog.how h2{margin:0 0 10px;font-size:1.35rem;line-height:1.2}
+dialog.how ol{margin:0 0 12px;padding-left:1.4rem}
+dialog.how li{margin:0 0 10px}
+dialog.how li::marker{font-weight:700}
+dialog.how svg{width:1.3em;height:1.3em;vertical-align:-.28em}
+dialog.how p{margin:0 0 14px;font-size:.95rem;color:#5A5A5A}
+dialog.how button{font:700 1.05rem "Lexend",Arial,sans-serif;background:#111;color:#FBFAF6;border:0;border-radius:999px;padding:10px 24px;cursor:pointer}
 """
 page = page.replace("<style>\n", "<style>\n" + FONT_CSS, 1)
-# build date + install hint on the home page; update prompt; offline support
-page = page.replace("are shown without a link.</p>`;",
-    "are shown without a link.</p>`;\n  h += `<p class=\"install\">Handbook updated " + BUILD_LABEL + ".${standalone ? \"\" : \" To keep it on your phone, use your browser’s Share or menu button and choose Add to Home Screen.\"}</p>`;", 1)
-assert "Handbook updated" in page
+# build date, install button, visit counter, update prompt and offline support are added by APP_JS below
 APP_JS = """
 const standalone = (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true;
+const BUILD_LABEL = "__BUILD_LABEL__";
+
+/* ---- Add to Home Screen ----
+   Android/Chrome lets a page open the install prompt from a button. iPhone and iPad do not,
+   so there the button shows the three taps instead. */
+let installEvent = null, installHidden = false;
+try { installHidden = localStorage.getItem("tag-install-hide") === "1"; } catch {}
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvent = e; });
+addEventListener("appinstalled", () => { installEvent = null; hideInstall(true); });
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function hideInstall(remember){
+  installHidden = true; if (remember) { try { localStorage.setItem("tag-install-hide", "1"); } catch {} }
+  document.querySelectorAll(".getapp").forEach(el => el.remove());
+}
+function showHow(){
+  let d = document.getElementById("how");
+  if (!d) {
+    d = document.createElement("dialog"); d.id = "how"; d.className = "how";
+    const share = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Share"><path d="M12 15V3M8 7l4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg>';
+    d.innerHTML = isIOS
+      ? `<h2>Add to your Home Screen</h2><ol><li>Tap the Share button ${share} in your browser's toolbar.</li><li>Scroll down and tap <b>Add to Home Screen</b>.</li><li>Tap <b>Add</b>.</li></ol><p>If you can't see that option, open this page in Safari first.</p><button type="button">Got it</button>`
+      : `<h2>Add to your home screen</h2><ol><li>Open your browser's menu (the three dots).</li><li>Tap <b>Add to Home screen</b> or <b>Install app</b>.</li><li>Tap <b>Install</b> or <b>Add</b>.</li></ol><button type="button">Got it</button>`;
+    d.querySelector("button").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });
+    document.body.append(d);
+  }
+  if (d.showModal) d.showModal(); else d.setAttribute("open", "");
+}
+document.addEventListener("click", async e => {
+  if (e.target.closest("[data-install]")) {
+    if (installEvent) { const ev = installEvent; installEvent = null; ev.prompt(); try { const r = await ev.userChoice; if (r && r.outcome === "accepted") hideInstall(true); } catch {} }
+    else showHow();
+  } else if (e.target.closest("[data-install-no]")) hideInstall(true);
+});
+
+/* ---- visit counts (anonymous, no cookies); does nothing if no counter is set or the phone is offline ---- */
+let lastCounted = "";
+function countView(path, title){
+  if (path === lastCounted) return; lastCounted = path;
+  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path, title, event: false}); else pendingView = {path, title}; } catch {}
+}
+let pendingView = null;
+addEventListener("load", () => { const t = setInterval(() => { if (window.goatcounter && window.goatcounter.count) { clearInterval(t); if (pendingView) { try { window.goatcounter.count({...pendingView, event: false}); } catch {} pendingView = null; } } }, 500); setTimeout(() => clearInterval(t), 15000); });
+
+window.APP = {
+  homeTop: () => (standalone || installHidden) ? "" : `<div class="getapp"><button type="button" class="go" data-install>Add to Home Screen</button><button type="button" class="no" data-install-no>Not now</button></div>`,
+  homeBottom: () => `<p class="install">Handbook updated ${BUILD_LABEL}.__COUNT_NOTE__</p>`,
+  view: (path, title) => { countView(path, title); return ""; },
+};
 if ("serviceWorker" in navigator) {
   const hadController = !!navigator.serviceWorker.controller;
   navigator.serviceWorker.register("sw.js").then(reg => {
@@ -57,7 +119,10 @@ if ("serviceWorker" in navigator) {
   });
 }
 """
+APP_JS = APP_JS.replace("__BUILD_LABEL__", BUILD_LABEL).replace("__COUNT_NOTE__", " Anonymous visit counts are collected; no personal data is stored." if COUNTER else "")
 page = page.replace("<script>\nconst DATA", "<script>" + APP_JS + "const DATA", 1)
+if COUNTER:
+    page = page.replace("<script>" + APP_JS, '<script data-goatcounter="https://%s.goatcounter.com/count" data-goatcounter-settings=\'{"no_onload": true}\' async src="https://gc.zgo.at/count.js"></script>\n<script>' % COUNTER + APP_JS, 1)
 assert "const standalone" in page
 HEAD = f"""<!doctype html>
 <html lang="en-GB">

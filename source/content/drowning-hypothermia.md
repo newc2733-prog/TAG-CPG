@@ -47,10 +47,10 @@ related: Anaelgesia for Trauma CPG | Emergency Department RSI CPG
 ## Key Principles of Relevance
 
 - There is a **high incidence of associated injuries** in victims of drowning. **Head and cervical spine** injuries are particularly common in patients rescued from shallow water.
-    - Treatment of a toddler drowning (<5 years) should focus on airway/ breathing management (ow risk of spinal or associated trauma).
+    - Treatment of a toddler drowning (<5 years) should focus on airway/ breathing management (low risk of spinal or associated trauma).
     - Adults & teenagers have the highest occurrence of spinal injuries (higher mechanisms of injury and increased risk factors).
 
-> Patients who are symptomatic and have no evidence of respiratory compromise (no CXR changes or hypoxia on ABG) after 6 – 8 hours may be safely discharged home.
+> Patients who are asymptomatic and have no evidence of respiratory compromise (no CXR changes or hypoxia on ABG) after 6 – 8 hours may be safely discharged home.
 > **All symptomatic patients should be admitted for observation.**
 
 ### POOR PROGNOSTIC FACTORS:
@@ -74,7 +74,7 @@ related: Anaelgesia for Trauma CPG | Emergency Department RSI CPG
 | **Airway and Breathing** | |
 | Early intubation if obtunded, respiratory failure or risk of aspiration<br>RSI ± MILS | Lung Protective Ventilation<br>Decompress the stomach via **NG** Tube |
 | **Circulation** | |
-| Treat Cardiac Arrest as per ALS/APLS<br>Arrythmias are common<br>Arterial line/CVC context specific<br>If < 30<sup>o</sup>C: max 3x defibrillation attempts and hold cardiac arrest drugs | **Active External Re-warming \***<br>Warm environment, remove wet clothes, bair Hugger & blankets, Inditherm mattress<br>**Active Internal Re-warming**<br>Warmed IV infusions, RRT, warm cavity irrigation, ECMO |
+| Treat Cardiac Arrest as per ALS/APLS<br>Arrhythmias are common<br>Arterial line/CVC context specific<br>If < 30<sup>o</sup>C: max 3x defibrillation attempts and hold cardiac arrest drugs | **Active External Re-warming \***<br>Warm environment, remove wet clothes, Bair Hugger & blankets, Inditherm mattress<br>**Active Internal Re-warming**<br>Warmed IV infusions, RRT, warm cavity irrigation, ECMO |
 | **Disability** | |
 | Neuroprotective measures<br>Correct Hypothermia to 32-34<sup>o</sup>C in arrest<br>Prevent Hyperthermia | No evidence for routine antibiotics or steroids |
 

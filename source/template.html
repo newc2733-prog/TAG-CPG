@@ -42,6 +42,7 @@ main{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:22px 64px}
 .intro{max-width:44rem;margin-bottom:18px}
 .intro h1{font-size:clamp(2rem,6vw,2.75rem);line-height:1.05;margin:0 0 10px;font-weight:700;text-wrap:balance}
 .intro p{margin:0;color:var(--ink-2)}
+.notice a{color:var(--ink);font-weight:700;overflow-wrap:anywhere}
 .notice{max-width:44rem;border:2px solid var(--line-strong);background:var(--surface);border-radius:12px;padding:12px 16px;font-size:1rem;margin-bottom:10px}
 .recent{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:18px 0 0}
 .recent .lbl{font-weight:700;font-size:1rem;margin-right:4px}
@@ -50,13 +51,17 @@ main{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:22px 64px}
 .pill.off{border-style:dashed;border-color:var(--line);color:var(--muted);cursor:help}
 .group{margin-top:30px}
 .bar-h{background:var(--bar);color:var(--bar-ink);font-size:1.3rem;font-weight:700;margin:0 0 12px;padding:8px 16px;border-radius:8px;line-height:1.3}
-.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:10px}
-.item{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:8px}
+.quicks{display:grid;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr));gap:8px}
+.quick{display:flex;align-items:center;min-height:3.6rem;background:var(--key);color:var(--key-ink);border-radius:12px;padding:10px 14px;font-weight:700;font-size:1.05rem;line-height:1.25;text-decoration:none}
+.quick:hover{outline:2px solid var(--line-strong)}
+.group.emerg{margin-top:22px}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;color:var(--ink)}
 .item:hover{border-color:var(--line-strong)}
-.item h3{margin:0;font-size:1.25rem;line-height:1.2;font-weight:700}
+.item h3{margin:0;font-size:1.2rem;line-height:1.25;font-weight:700}
 .item p{grid-column:1;margin:0;color:var(--muted);font-size:.95rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.item .chev{grid-row:1/3;grid-column:2;font-size:1.6rem;line-height:1}
-.foot{margin-top:16px;color:var(--muted);font-size:.95rem;max-width:44rem}
+.item .chev{grid-column:2;font-size:1.6rem;line-height:1}
+.foot{margin-top:28px;color:var(--muted);font-size:.95rem;max-width:44rem}
 
 /* results */
 .res-h{font-weight:700;font-size:1.1rem;margin:0 0 14px}
@@ -74,11 +79,11 @@ mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2p
 .back{display:inline-block;font-size:1rem;color:var(--ink);margin-bottom:6px}
 .doc-h h1{font-size:clamp(2.1rem,7vw,3rem);line-height:1.05;margin:0 0 14px;font-weight:700;text-wrap:balance}
 .meta{color:var(--muted);font-size:.95rem;margin-bottom:14px}
-.aim{max-width:46rem;background:var(--surface);border:2px solid var(--line-strong);border-radius:12px;padding:12px 16px}
-.aim p{margin:0}
-.aim details{margin-top:8px;font-size:1rem}
+.aim{max-width:46rem;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:8px 14px;font-size:1rem}
 .aim summary{cursor:pointer;font-weight:700}
-.aim ul{margin:6px 0 0;padding-left:1.2rem}
+.aim[open] summary{margin-bottom:6px}
+.aim p{margin:0 0 6px}
+.aim ul{margin:0;padding-left:1.2rem}
 .rel{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;max-width:46rem}
 .rel .lbl{font-weight:700;font-size:1rem;margin-right:2px}
 .toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 4.2rem);z-index:10;background:var(--page);margin:18px -16px 0;padding:8px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;border-bottom:1.5px solid var(--line)}
@@ -271,26 +276,48 @@ let pendingTerms = null;
 function recent(){ try { return JSON.parse(localStorage.getItem("tag-recent") || "[]").filter(s => BY[s]); } catch { return []; } }
 function pushRecent(s){ try { const r = [s, ...recent().filter(x => x !== s)].slice(0, 5); localStorage.setItem("tag-recent", JSON.stringify(r)); } catch {} }
 
+/* one-tap links to the sections most needed under pressure (label, guideline, start of section title) */
+const EMERGENCY = [
+  {label: "Code Red: induction",        slug: "code-red",        section: "Anaesthetic Considerations"},
+  {label: "Code Red: resuscitation",    slug: "code-red",        section: "Resuscitation Considerations"},
+  {label: "Traumatic cardiac arrest",   slug: "code-red",        section: "Traumatic Cardiac Arrest"},
+  {label: "RSI drugs",                  slug: "ed-rsi",          section: "Drugs"},
+  {label: "Front-of-neck access",       slug: "ed-rsi",          section: "Plan D"},
+  {label: "Code Black: ICP care",       slug: "code-black",      section: "ICP Care"},
+  {label: "Neck injury: airway plan",   slug: "neck-injury",     section: "Airway Management Plan"},
+  {label: "Peri-mortem Caesarean",      slug: "pregnant-trauma", section: "Peri-mortem"},
+];
+
+/* optional extras supplied by the standalone app build (install button, build date, visit counts) */
+const hook = (n, ...a) => (window.APP && typeof window.APP[n] === "function") ? window.APP[n](...a) : "";
+
 function renderHome(){
-  currentSlug = null;
+  currentSlug = null; setWake(false);
   document.title = "TAG Trauma Handbook";
   const rec = recent();
   let h = `<div class="intro"><h1>Trauma anaesthesia guidelines</h1>
-    <p>All ${DATA.cpgs.length} Trauma Anaesthesia Group clinical practice guidelines from the Royal London Hospital. Search across all of them from the box above, or open one below.</p></div>`;
+    <p>All ${DATA.cpgs.length} Trauma Anaesthesia Group clinical practice guidelines from the Royal London Hospital.</p></div>`;
+  h += hook("homeTop");
+  const quick = EMERGENCY.map(e => {
+    const c = BY[e.slug]; const s = c && c.sections.find(x => x.title.toLowerCase().startsWith(e.section.toLowerCase()));
+    return s ? `<a class="quick" href="#${e.slug}.${s.id}">${esc(e.label)}</a>` : "";
+  }).join("");
+  if (quick) h += `<section class="group emerg"><h2 class="bar-h">In an emergency</h2><div class="quicks">${quick}</div></section>`;
   for (const [g, label] of Object.entries(DATA.groups)) {
     const list = DATA.cpgs.filter(c => c.group === g);
     h += `<section class="group"><h2 class="bar-h">${label}</h2><div class="list">` +
-      list.map(c => `<a class="item" href="#${c.slug}"><h3>${esc(c.title)}</h3><p>${esc(c.aim)}</p><span class="chev" aria-hidden="true">›</span></a>`).join("") +
+      list.map(c => `<a class="item" href="#${c.slug}"><h3>${esc(c.title)}</h3><span class="chev" aria-hidden="true">›</span></a>`).join("") +
       `</div></section>`;
   }
   if (rec.length) h += `<div class="recent" style="margin-top:36px"><span class="lbl">Recently opened</span>${rec.map(s => `<a class="pill" href="#${s}">${esc(BY[s].title)}</a>`).join("")}</div>`;
-  h += `<div class="notice" style="margin-top:24px"><b>Prototype.</b> Text is transcribed from the 2025 PDFs. Check the controlled copy before relying on a dose or number.</div>`;
-  h += `<p class="foot">Source: TAG clinical practice guidelines, version 2, reviewed 2025. Department of Perioperative &amp; Pain Medicine, Barts Health NHS Trust. Documents the guidelines refer to but that are not included here (REBOA, Paediatric Trauma, Analgesia for Trauma, Anticoagulation Reversal, Code Red ROTEM algorithm) are shown without a link.</p>`;
+  h += `<p class="foot">Text is transcribed from the TAG clinical practice guidelines (version 2, reviewed 2025), with 30 typos corrected. Check the controlled copy before relying on a dose or number. Documents the guidelines refer to but that are not included here (REBOA, Paediatric Trauma, Analgesia for Trauma, Anticoagulation Reversal, Code Red ROTEM algorithm) are shown without a link.</p>`;
+  h += hook("homeBottom");
   main.innerHTML = h; window.scrollTo(0, 0);
+  hook("view", "/", "Home");
 }
 
 function renderResults(query){
-  currentSlug = null;
+  currentSlug = null; setWake(false);
   const ts = terms(query);
   const hits = search(query);
   if (!hits.length) {
@@ -312,7 +339,8 @@ function renderResults(query){
 let currentSlug = null;
 function renderDoc(slug, sid){
   const c = BY[slug]; if (!c) return renderHome();
-  currentSlug = slug;
+  currentSlug = slug; setWake(true);
+  hook("view", "/" + slug, c.title);
   document.title = c.title + " · TAG Trauma Handbook";
   pushRecent(slug);
   const rel = c.related.length ? `<div class="rel"><span class="lbl">See also</span>${c.related.map(r => r.slug
@@ -322,8 +350,7 @@ function renderDoc(slug, sid){
     <div class="doc-h">
       <a class="back" href="#">‹ All guidelines</a>
       <h1>${esc(c.title)}</h1>
-      <div class="aim"><p>${esc(c.aim)}</p>
-        <details><summary>Objectives</summary><ul>${c.objectives.map(o => `<li>${esc(o)}</li>`).join("")}</ul></details></div>
+      <details class="aim"><summary>Aim and objectives</summary><p>${esc(c.aim)}</p><ul>${c.objectives.map(o => `<li>${esc(o)}</li>`).join("")}</ul></details>
     </div>
     <nav class="toc" aria-label="Sections">${c.sections.map(s => `<a href="#${slug}.${s.id}" data-sid="${s.id}">${esc(s.title)}</a>`).join("")}</nav>
     <article id="art">${c.html}</article>
@@ -346,6 +373,16 @@ function toSection(el){
   const off = (bar ? bar.offsetHeight : 0) + (toc ? toc.offsetHeight : 0) + 6;
   window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - off);
 }
+
+/* keep the screen awake while a guideline is open (ignored where the phone does not allow it) */
+let wake = null;
+async function setWake(on){
+  try {
+    if (on && !wake && "wakeLock" in navigator && !document.hidden) { wake = await navigator.wakeLock.request("screen"); wake.addEventListener("release", () => { wake = null; }); }
+    else if (!on && wake) { await wake.release(); wake = null; }
+  } catch { wake = null; }
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden && currentSlug) setWake(true); });
 
 /* text size */
 const SIZES = [1, 1.15, 1.3];
