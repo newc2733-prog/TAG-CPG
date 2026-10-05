@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<!-- build 20261005-1754 -->
+<!-- build 20261005-1848 -->
 <style>
 @font-face{font-family:"Lexend";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/lexend-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:"Lexend";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/lexend-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -327,7 +327,8 @@ addEventListener("load", () => { const t = setInterval(() => { if (window.goatco
 
 window.APP = {
   homeTop: () => (standalone || installHidden) ? "" : `<div class="getapp"><button type="button" class="go" data-install>Add to Home Screen</button><button type="button" class="no" data-install-no>Not now</button></div>`,
-  homeBottom: () => `<p class="install">Handbook updated ${BUILD_LABEL}.</p>`,
+  updated: () => ` · Updated ${BUILD_LABEL}`,
+  homeBottom: () => ``,
   view: (path, title) => { countView(path, title); return ""; },
 };
 if ("serviceWorker" in navigator) {
@@ -437,6 +438,9 @@ const EMERGENCY = [
   {label: "Peri-mortem Caesarean",      slug: "pregnant-trauma", section: "Peri-mortem"},
 ];
 
+/* shown at the bottom of the home page; raise it when the handbook content changes */
+const HANDBOOK_VERSION = "1.1";
+
 /* optional extras supplied by the standalone app build (install button, build date, visit counts) */
 const hook = (n, ...a) => (window.APP && typeof window.APP[n] === "function") ? window.APP[n](...a) : "";
 
@@ -470,7 +474,7 @@ function renderHome(){
       `</div></section>`;
   }
   if (rec.length) h += `<div class="recent" style="margin-top:36px"><span class="lbl">Recently opened</span>${rec.map(s => `<a class="pill" href="#${s}">${esc(BY[s].title)}</a>`).join("")}</div>`;
-  h += `<p class="foot">Text is transcribed from the TAG clinical practice guidelines (version 2, reviewed 2025), with 30 typos corrected. Check the controlled copy before relying on a dose or number. Documents the guidelines refer to but that are not included here (REBOA, Paediatric Trauma, Analgesia for Trauma, Anticoagulation Reversal) are shown without a link.</p>`;
+  h += `<p class="foot">2025 · Version ${HANDBOOK_VERSION}${hook("updated")}</p>`;
   h += hook("homeBottom");
   main.innerHTML = h; window.scrollTo(0, 0);
   hook("view", "/", "Home");

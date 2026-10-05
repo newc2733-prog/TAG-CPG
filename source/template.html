@@ -336,6 +336,9 @@ const EMERGENCY = [
   {label: "Peri-mortem Caesarean",      slug: "pregnant-trauma", section: "Peri-mortem"},
 ];
 
+/* shown at the bottom of the home page; raise it when the handbook content changes */
+const HANDBOOK_VERSION = "1.1";
+
 /* optional extras supplied by the standalone app build (install button, build date, visit counts) */
 const hook = (n, ...a) => (window.APP && typeof window.APP[n] === "function") ? window.APP[n](...a) : "";
 
@@ -369,7 +372,7 @@ function renderHome(){
       `</div></section>`;
   }
   if (rec.length) h += `<div class="recent" style="margin-top:36px"><span class="lbl">Recently opened</span>${rec.map(s => `<a class="pill" href="#${s}">${esc(BY[s].title)}</a>`).join("")}</div>`;
-  h += `<p class="foot">Text is transcribed from the TAG clinical practice guidelines (version 2, reviewed 2025), with 30 typos corrected. Check the controlled copy before relying on a dose or number. Documents the guidelines refer to but that are not included here (REBOA, Paediatric Trauma, Analgesia for Trauma, Anticoagulation Reversal) are shown without a link.</p>`;
+  h += `<p class="foot">2025 · Version ${HANDBOOK_VERSION}${hook("updated")}</p>`;
   h += hook("homeBottom");
   main.innerHTML = h; window.scrollTo(0, 0);
   hook("view", "/", "Home");

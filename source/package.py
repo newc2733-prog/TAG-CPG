@@ -98,7 +98,8 @@ addEventListener("load", () => { const t = setInterval(() => { if (window.goatco
 
 window.APP = {
   homeTop: () => (standalone || installHidden) ? "" : `<div class="getapp"><button type="button" class="go" data-install>Add to Home Screen</button><button type="button" class="no" data-install-no>Not now</button></div>`,
-  homeBottom: () => `<p class="install">Handbook updated ${BUILD_LABEL}.__COUNT_NOTE__</p>`,
+  updated: () => ` · Updated ${BUILD_LABEL}`,
+  homeBottom: () => `__COUNT_NOTE__`,
   view: (path, title) => { countView(path, title); return ""; },
 };
 if ("serviceWorker" in navigator) {
@@ -119,7 +120,7 @@ if ("serviceWorker" in navigator) {
   });
 }
 """
-APP_JS = APP_JS.replace("__BUILD_LABEL__", BUILD_LABEL).replace("__COUNT_NOTE__", " Anonymous visit counts are collected; no personal data is stored." if COUNTER else "")
+APP_JS = APP_JS.replace("__BUILD_LABEL__", BUILD_LABEL).replace("__COUNT_NOTE__", '<p class="install">Anonymous visit counts are collected; no personal data is stored.</p>' if COUNTER else "")
 page = page.replace("<script>\nconst DATA", "<script>" + APP_JS + "const DATA", 1)
 if COUNTER:
     page = page.replace("<script>" + APP_JS, '<script data-goatcounter="https://%s.goatcounter.com/count" data-goatcounter-settings=\'{"no_onload": true}\' async src="https://gc.zgo.at/count.js"></script>\n<script>' % COUNTER + APP_JS, 1)
