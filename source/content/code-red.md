@@ -53,7 +53,7 @@ Keep all elements of anaesthesia as simple and standardised as possible
 |---|---|
 | **Permissive hypotension** | Aim to maintain SBP ≥ 60-70mmHg (see below) |
 | **Blood product ratio 1:1:1** | **Avoid crystalloids** |
-| **ROTEM Guidance** | Maintain pack A/B ratios until ROTEM results available, then products as per algorithm **in addition** to packs |
+| **ROTEM Guidance** | Maintain pack A/B ratios until ROTEM results available, then products as per <a class="xref" href="#rotem-algorithm.s2">algorithm</a> **in addition** to packs |
 | **Tranexamic Acid** | **2g** (within first 3 hours)<br>**1g** (every whole body transfusion) |
 | **Calcium** | **10 ml 10% Calcium Chloride**<br>Keep ionised Ca<sup>2+</sup> > 1.0 |
 | **Bicarbonate** | **1ml/kg of 8.4%** for severe, profound acidosis |

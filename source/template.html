@@ -372,7 +372,7 @@ function renderHome(){
   if (emerg) h += `<section class="group emerg"><h2 class="bar-h">In an emergency</h2><div class="quicks">${emerg}</div></section>`;
   if (quick) h += `<section class="group"><h2 class="bar-h">Quick access</h2><div class="quicks plain">${quick}</div></section>`;
   for (const [g, label] of Object.entries(DATA.groups)) {
-    const list = DATA.cpgs.filter(c => c.group === g);
+    const list = DATA.cpgs.filter(c => c.group === g && !QUICK.some(q => q.slug === c.slug && !q.anchor));
     h += `<section class="group grp grp-${g}"><h2 class="bar-h">${label}</h2><div class="list">` +
       list.map(c => `<a class="item" href="#${c.slug}"><h3>${esc(c.title)}</h3><span class="chev" aria-hidden="true">›</span></a>`).join("") +
       `</div></section>`;
