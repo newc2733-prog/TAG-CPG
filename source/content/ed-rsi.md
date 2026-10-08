@@ -1,5 +1,5 @@
 title: Emergency Department RSI
-group: resus
+group: airway
 version: 2 (reviewed June 2025)
 effective: 1 May 2021
 review: 1 July 2028

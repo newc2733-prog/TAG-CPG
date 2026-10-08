@@ -5,13 +5,24 @@ ORDER = ["code-red", "rotem-algorithm", "code-black", "ed-rsi",
          "difficult-airway", "neck-injury", "one-lung-ventilation",
          "elderly-trauma", "pregnant-trauma", "drowning-hypothermia",
          "rib-fractures", "spinal-cord-injury",
-         "vascular-access", "ultrasound", "tag-skillset"]
+         "vascular-access", "ultrasound", "tag-skillset",
+         # pages from the RATS handbook (3.3)
+         "rats-thoracotomy", "rats-ecmo", "rats-paediatric",
+         "rats-afoi",
+         "rats-optiflow", "rats-cmac", "rats-ambuscope", "rats-transport-ventilators",
+         "rats-belmont", "rats-reboa", "rats-line-setup", "rats-warming", "rats-pac", "rats-defib-paddles",
+         "rats-resus-bay-8", "rats-marched", "rats-major-incident",
+         # reached from Quick access only
+         "rats-baste", "rats-code-red-activation",
+         "phone-numbers", "acknowledgements"]
 GROUPS = {
     "resus": "Resuscitation",
     "airway": "Airway",
     "populations": "Special populations",
     "injuries": "Specific injuries",
     "procedures": "Procedures & skills",
+    "kit": "Kit",
+    "logistics": "Logistics",
 }
 # names used in the PDFs -> slug in this handbook (None = not in the set)
 NAMES = {
@@ -110,10 +121,11 @@ def build(slug):
         related.append({"name": r, "slug": NAMES.get(r.lower())})
     return {
         "slug": slug, "title": meta["title"], "group": meta["group"],
-        "version": meta["version"], "effective": meta["effective"], "review": meta["review"],
+        "version": meta.get("version", ""), "effective": meta.get("effective", ""), "review": meta.get("review", ""),
+        "hidden": meta.get("hidden", "") == "yes",
         "aim": meta.get("aim", ""), "objectives": [o.strip() for o in meta.get("objectives", "").split("|") if o.strip()],
         "footer": meta.get("footer", ""),
-        "related": related, "sections": sections, "html": h, "source": SOURCE[slug],
+        "related": related, "sections": sections, "html": h, "source": SOURCE.get(slug, "RATS handbook 3.3.pdf"),
     }
 
 data = [build(s) for s in ORDER]

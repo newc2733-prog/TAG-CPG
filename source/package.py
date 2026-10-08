@@ -126,7 +126,7 @@ if COUNTER:
     page = page.replace("<script>" + APP_JS, '<script data-goatcounter="https://%s.goatcounter.com/count" data-goatcounter-settings=\'{"no_onload": true}\' async src="https://gc.zgo.at/count.js"></script>\n<script>' % COUNTER + APP_JS, 1)
 assert "const standalone" in page
 HEAD = f"""<!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" data-style="colour">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
