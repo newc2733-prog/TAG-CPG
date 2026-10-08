@@ -1,100 +1,15 @@
-// Offline support. A new build changes VERSION, which makes phones fetch the new files.
-const VERSION = "20261008-1142";
-const CACHE = "tag-handbook-" + VERSION;
-const FILES = [
-  "./",
-  "index.html",
-  "manifest.webmanifest",
-  "fig/code-red-tca.jpg",
-  "fig/da-aintree.jpg",
-  "fig/da-airtraq.jpg",
-  "fig/da-ambu.jpg",
-  "fig/da-cmac.jpg",
-  "fig/da-das.jpg",
-  "fig/da-epistat.jpg",
-  "fig/da-mcgrath.jpg",
-  "fig/drown-patho.jpg",
-  "fig/neck-zones.jpg",
-  "fig/olv-dlt.jpg",
-  "fig/olv-insertion.jpg",
-  "fig/olv-photos.jpg",
-  "fig/olv-trouble.jpg",
-  "fig/rats-afoi-1.jpg",
-  "fig/rats-afoi-2.jpg",
-  "fig/rats-aline.jpg",
-  "fig/rats-ambuscope-1.jpg",
-  "fig/rats-ambuscope-2.jpg",
-  "fig/rats-belmont-1.jpg",
-  "fig/rats-belmont-2.jpg",
-  "fig/rats-bucket-1.jpg",
-  "fig/rats-bucket-2.jpg",
-  "fig/rats-bucket-3.jpg",
-  "fig/rats-bucket-4.jpg",
-  "fig/rats-bucket-5.jpg",
-  "fig/rats-bucket-6.jpg",
-  "fig/rats-bucket-7.jpg",
-  "fig/rats-bucket-8.jpg",
-  "fig/rats-cmac-1.jpg",
-  "fig/rats-cmac-2.jpg",
-  "fig/rats-cmac-3.jpg",
-  "fig/rats-codered-drugs.jpg",
-  "fig/rats-defib-paddles.jpg",
-  "fig/rats-ecmo.jpg",
-  "fig/rats-inditherm.jpg",
-  "fig/rats-optiflow-1.jpg",
-  "fig/rats-optiflow-2.jpg",
-  "fig/rats-pac-flow.jpg",
-  "fig/rats-pac-parameters.jpg",
-  "fig/rats-pac-photo.jpg",
-  "fig/rats-pac-waveform.jpg",
-  "fig/rats-paeds-rotem.jpg",
-  "fig/rats-reboa-catheter.jpg",
-  "fig/rats-reboa-mon-1.jpg",
-  "fig/rats-reboa-mon-10.jpg",
-  "fig/rats-reboa-mon-11.jpg",
-  "fig/rats-reboa-mon-2.jpg",
-  "fig/rats-reboa-mon-3.jpg",
-  "fig/rats-reboa-mon-4.jpg",
-  "fig/rats-reboa-mon-5.jpg",
-  "fig/rats-reboa-mon-6.jpg",
-  "fig/rats-reboa-mon-7.jpg",
-  "fig/rats-reboa-mon-8.jpg",
-  "fig/rats-reboa-mon-9.jpg",
-  "fig/rats-reboa-zones.jpg",
-  "fig/rats-resus-tray.jpg",
-  "fig/rats-shock-call.jpg",
-  "fig/rats-tline-1.jpg",
-  "fig/rats-tline-2.jpg",
-  "fig/rats-tline-3.jpg",
-  "fig/rats-vent-1.jpg",
-  "fig/rats-vent-2.jpg",
-  "fig/rats-vent-3.jpg",
-  "fig/rib-catheter.jpg",
-  "fig/rotem-algorithm.jpg",
-  "fig/rsi-checklist.jpg",
-  "fig/rsi-das.jpg",
-  "fig/rsi-fona.jpg",
-  "fig/sci-asia.jpg",
-  "fig/sci-infographic.jpg",
-  "fig/tag-logo.png",
-  "fig/vasc-mac.jpg",
-  "fig/vasc-ric.jpg",
-  "fig/vasc-scv.jpg",
-  "fonts/lexend-latin-ext-wght-normal.woff2",
-  "fonts/lexend-latin-wght-normal.woff2",
-  "icons/apple-touch-icon.png",
-  "icons/icon-192.png",
-  "icons/icon-512.png",
-  "icons/icon-maskable-512.png"
-];
-self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES.map(f => new Request(f, {cache: "reload"})))).then(() => self.skipWaiting()));
-});
-self.addEventListener("activate", e => {
-  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k.startsWith("tag-handbook-") && k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim()));
-});
-self.addEventListener("fetch", e => {
-  if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
-  const req = e.request.mode === "navigate" ? "index.html" : e.request;
-  e.respondWith(caches.open(CACHE).then(c => c.match(req, {ignoreSearch: true})).then(hit => hit || fetch(e.request)));
+// The handbook has moved to https://rlh-tag.github.io/
+// This worker replaces the old offline copy: it clears the stored files,
+// sends any open copy to the new address, and removes itself.
+self.addEventListener("install", () => self.skipWaiting());
+self.addEventListener("activate", event => {
+  event.waitUntil((async () => {
+    for (const key of await caches.keys()) await caches.delete(key);
+    await self.clients.claim();
+    for (const client of await self.clients.matchAll({type: "window"})) {
+      const hash = new URL(client.url).hash;
+      try { await client.navigate("https://rlh-tag.github.io/" + hash); } catch (e) {}
+    }
+    await self.registration.unregister();
+  })());
 });
